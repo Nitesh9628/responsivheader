@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Animated Professional Header</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f3f7ff;
+    min-height:200vh;
+}
+
+/* ========= HEADER ========= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:999;
+    padding:18px 0;
+    transition:0.4s;
+    animation:topAnimation 1s ease;
+}
+
+header.sticky{
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(18px);
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    padding:12px 0;
+}
+
+@keyframes topAnimation{
+    from{
+        transform:translateY(-100%);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.navbar{
+    width:92%;
+    max-width:1350px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* ========= LOGO ========= */
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    color:#2563eb;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+.logo span{
+    color:#111827;
+}
+
+.logo::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+    transition:0.8s;
+}
+
+.logo:hover::before{
+    left:100%;
+}
+
+/* ========= MENU ========= */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:38px;
+    list-style:none;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links li a{
+    text-decoration:none;
+    color:#111827;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+    position:relative;
+}
+
+/* Underline Animation */
+
+.nav-links li a::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0%;
+    height:3px;
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+    border-radius:20px;
+    transition:0.4s;
+    transform:translateX(-50%);
+}
+
+.nav-links li a:hover::after{
+    width:100%;
+}
+
+.nav-links li a:hover{
+    color:#2563eb;
+}
+
+/* ========= DROPDOWN ========= */
+
+.dropdown-menu{
+    position:absolute;
+    top:160%;
+    left:0;
+    width:260px;
+    background:white;
+    backdrop-filter:blur(20px);
+    border-radius:18px;
+    padding:15px 0;
+    list-style:none;
+    box-shadow:0 20px 40px rgba(0,0,0,0.10);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(20px);
+
+    transition:0.4s;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-menu li a{
+    display:block;
+    padding:14px 24px;
+    color:#111827;
+    transition:0.3s;
+}
+
+.dropdown-menu li a:hover{
+    background:rgba(37,99,235,0.08);
+    color:#2563eb;
+    padding-left:34px;
+}
+
+.dropdown-menu li a::after{
+    display:none;
+}
+
+/* ========= BUTTON ========= */
+
+.nav-btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:60px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(37,99,235,0.3);
+}
+
+.nav-btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
+    transition:0.8s;
+}
+
+.nav-btn:hover::before{
+    left:100%;
+}
+
+.nav-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 16px 35px rgba(37,99,235,0.4);
+}
+
+/* ========= MOBILE MENU ========= */
+
+.menu-toggle{
+    display:none;
+    width:35px;
+    height:30px;
+    position:relative;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    position:absolute;
+    width:100%;
+    height:4px;
+    background:#111827;
+    border-radius:50px;
+    transition:0.4s;
+}
+
+.menu-toggle span:nth-child(1){
+    top:0;
+}
+
+.menu-toggle span:nth-child(2){
+    top:12px;
+}
+
+.menu-toggle span:nth-child(3){
+    top:24px;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:rotate(45deg);
+    top:12px;
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:rotate(-45deg);
+    top:12px;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:950px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-btn{
+        display:none;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:100%;
+        left:-100%;
+        width:100%;
+        background:rgba(255,255,255,0.95);
+        backdrop-filter:blur(20px);
+        flex-direction:column;
+        gap:30px;
+        padding:45px 0;
+        transition:0.5s ease;
+        box-shadow:0 20px 40px rgba(0,0,0,0.08);
+        border-radius:0 0 30px 30px;
+    }
+
+    .nav-links.active{
+        left:0;
+    }
+
+    /* Mobile Dropdown */
+
+    .dropdown-menu{
+        position:relative;
+        width:100%;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        display:none;
+        box-shadow:none;
+        background:transparent;
+        padding-top:10px;
+    }
+
+    .dropdown.active .dropdown-menu{
+        display:block;
+    }
+
+    .dropdown-menu li a{
+        text-align:center;
+    }
+
+}
+
+/* ========= HERO ========= */
+
+.hero{
+    padding-top:180px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:65px;
+    font-weight:800;
+    color:#111827;
+    margin-bottom:20px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero p{
+    font-size:18px;
+    color:#6b7280;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+    animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        transform:translateY(50px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:38px;
+        padding:0 15px;
+    }
+
+    .hero p{
+        font-size:15px;
+        padding:0 18px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="header">
+
+<nav class="navbar">
+
+    <div class="logo">
+        Medi<span>Care</span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+
+        <li><a href="#">Home</a></li>
+
+        <!-- DROPDOWN -->
+
+        <li class="dropdown" id="dropdown">
+
+            <a href="#">
+                Services ▾
+            </a>
+
+            <ul class="dropdown-menu">
+
+                <li><a href="#">Medicine Delivery</a></li>
+                <li><a href="#">Doctor Appointment</a></li>
+                <li><a href="#">Health Checkup</a></li>
+                <li><a href="#">Emergency Support</a></li>
+
+            </ul>
+
+        </li>
+
+        <li><a href="#">Medicines</a></li>
+        <li><a href="#">Doctors</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+
+    </ul>
+
+    <button class="nav-btn">
+        Explore Now
+    </button>
+
+    <div class="menu-toggle" id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+    <h1>Modern Medical Store Website</h1>
+
+    <p>
+        Ultra attractive animated professional responsive 
+        header design for mobile, tablet, laptop and desktop.
+    </p>
+
+</section>
+
+<script>
+
+/* MOBILE MENU */
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", ()=>{
+
+    navLinks.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+
+});
+
+/* MOBILE DROPDOWN */
+
+const dropdown = document.getElementById("dropdown");
+
+dropdown.addEventListener("click", ()=>{
+
+    if(window.innerWidth <= 950){
+
+        dropdown.classList.toggle("active");
+
+    }
+
+});
+
+/* STICKY HEADER */
+
+window.addEventListener("scroll", ()=>{
+
+    const header = document.getElementById("header");
+
+    header.classList.toggle("sticky", window.scrollY > 20);
+
+});
+
+</script>
+
+</body>
+</html>
